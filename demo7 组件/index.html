@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+	//使用函数定义一个组件
+	function Welcome (props) {
+		return <h1>Hello,{props.name}</h1>
+	}
+	//使用ES6 class来定义一个组件
+	// class Welcome extends React.Component {
+	// 	render(){
+	// 		return <h1>Hello,{this.props.name}</h1>
+	// 	}
+	// }
+	const element = <Welcome name="Sara" />;
+	ReactDOM.render(
+		element,
+		document.getElementById('example')
+	)
+	//1 我们对<Welcome name="Sara" />;元素调用了ReactDOM.render()方法
+	//2 元素{name : 'Sara'}作为props传入并调用Welcome组件
+	//3 Welcome组件将<h1>Hello Sara</h1>作为结果返回
+	//4 ReactDOM将DOM跟新为<h1>Hello Sara</h1>
+	//注意:组件首字母必须大写
+</script>
+</body>
+</html>

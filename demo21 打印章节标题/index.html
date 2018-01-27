@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Todo List</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/babel">
+	class Lesson extends React.Component {
+		show(){
+			console.log(this.props.Key+'-'+this.props.lesson.title)
+		}
+
+		render() {
+
+			return(
+				<div>
+					<div onClick={this.show.bind(this)}>
+						<h1>{this.props.lesson.title}</h1>
+						<p>{this.props.lesson.description}</p>
+					</div>
+				</div>
+			)
+		}
+
+	}
+
+	class LessonsList extends React.Component {
+
+		render(){
+			return(
+				<div>
+					{this.props.lessons.map((lesson,i)=>(
+						<Lesson lesson={lesson} Key={i}/>
+					))}
+				</div>
+
+			)
+		}
+
+	}
+
+	ReactDOM.render(
+		<LessonsList />,
+		document.getElementById('container')
+	)
+</script>
+</body>
+</html>

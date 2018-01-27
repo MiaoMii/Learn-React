@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>开关电脑</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/babel">
+	class Computer extends React.Component {
+		constructor(){
+			super()
+			this.state = {
+				active:false,
+				status :'off',
+				showContent :'无内容'
+			}
+			this.manage = this.manage.bind(this)
+		}
+		manage(){
+			if(!this.state.active){
+				this.setState({
+					active:true,
+					status:'on',
+					showContent :'显示器亮了'
+				})
+			}else{
+				this.setState({
+					active:false,
+					status:'off',
+					showContent :'显示器关了'
+				})
+			}
+
+		}
+
+		render () {
+			return (
+				<div>
+					<Screen showContent={this.state.showContent} />
+					<button onClick={this.manage}>开关</button>
+				</div>
+			)
+		}
+	}
+
+	class Screen extends React.Component {
+		static defaultProps = {
+			showContent:'无内容'
+		}
+		render () {
+			return (
+				<div className='screen'>{this.props.showContent}</div>
+			)
+		}
+	}
+	ReactDOM.render(
+		<Computer />,
+		document.getElementById('container')
+	)
+</script>
+</body>
+</html>

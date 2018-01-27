@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>状态提升</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/babel">
+	class Input extends React.Component {
+		constructor(){
+			super()
+			this.state = {
+				value : ''
+			}
+			this.chengeValue = this.chengeValue.bind(this)
+		}
+
+		chengeValue(e) {
+			this.setState({
+				value:e.target.value
+			})
+			this.props.getValue(e.target.value)
+		}
+
+		render () {
+			return (
+				<div>
+					<input type='number' onChange={this.chengeValue}/>
+				</div>
+			)
+		}
+	}
+
+	class PercentageShower extends React.Component {
+
+
+
+		render () {
+
+			return (
+				<div>
+					<p>{Number(this.props.parentValue * 100).toFixed(2)}%</p>
+				</div>
+			)
+		}
+	}
+
+	class PercentageApp extends React.Component {
+		constructor(){
+			super()
+			this.state = {
+				childValue : ''
+			}
+		}
+
+		getValue(backValue){
+			this.setState(
+				{
+					childValue: backValue
+				}
+			)
+		}
+
+		render () {
+			return (
+				<div>
+					<Input getValue={this.getValue.bind(this)}/>
+					<PercentageShower parentValue={this.state.childValue}/>
+				</div>
+			)
+		}
+	}
+
+	ReactDOM.render(
+		<PercentageApp />,
+		document.getElementById('container')
+	)
+</script>
+</body>
+</html>

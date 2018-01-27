@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组合组件</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+	//使用函数定义一个组件
+	function Welcome (props) {
+		return <h1>Hello,{props.name}</h1>
+	}
+
+	function App() {
+		return (
+			<div>
+				<Welcome name="Sara" />
+				<Welcome name="cahal" />
+				<Welcome name="Edite" />
+			</div>
+		);
+	}
+
+	ReactDOM.render(
+		<App />,
+		document.getElementById('example')
+	)
+	//注意:组件的返回值只能有一个根元素
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>stage生命周期</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+	class ItemList extends React.Component{
+		constructor() {
+			super();
+			this.state =  {
+				name:'司亚楠',
+				age:22,
+			}
+		}
+
+		componentDidMount() {
+			this.setState({age:18},()=>alert('setState finished'))
+		}
+
+		render() {
+			return (
+				<div>
+					<ul>
+						<li>{this.state.name}</li>
+						<li>{this.state.age}</li>
+					</ul>
+				</div>
+			)
+		}
+
+	}
+
+	ReactDOM.render(
+		<ItemList />,
+		document.getElementById('example')
+	)
+</script>
+</body>
+</html>

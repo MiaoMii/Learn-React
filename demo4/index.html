@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+	//React.createClass用于生成组件
+	//变量HelloMessage就是一个组件，模板插入<HelloMessage />时，会自动生成HelloMessage的一个实例
+	//组件类首字母必须大写
+	//所有组件必须有自己的render方法，用于输出组件
+	let HelloMessage = React.createClass({
+		render:function () {
+			return <h1>Hello {this.props.name}</h1>
+		}
+	});
+	ReactDOM.render(
+		<HelloMessage name="Jhon" />,
+		document.getElementById('example')
+	)
+	//组件只能包含一个顶层标签
+	// let HelloMessage = React.createClass({
+	// 	render:function () {
+	// 		return <h1>Hello {this.props.name}</h1>
+	//		        <p>error</p>
+	// 	}
+	// });
+	//由于组件中包含了 h1和p两个顶层标签
+
+	//组件的属性值可以在组件类的this.props对象上获得
+</script>
+</body>
+</html>

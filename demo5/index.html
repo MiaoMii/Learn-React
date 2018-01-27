@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+	//this.props.children表示组件所有子节点
+	//变量HelloMessage就是一个组件，模板插入<HelloMessage />时，会自动生成HelloMessage的一个实例
+	//组件类首字母必须大写
+	//所有组件必须有自己的render方法，用于输出组件
+	let HelloMessage = React.createClass({
+		render:function () {
+			return (
+				<ol>
+					{
+						React.Children.map(this.props.children,function (child) {
+							return<li>{child}</li>
+						})
+					}
+				</ol>
+			)
+		}
+	});
+	ReactDOM.render(
+		<div>
+			<span>子节点1</span>
+			<span>子节点2</span>
+		</div>,
+		document.getElementById('example')
+	)
+	//React.Children来处理this.props.children，用React.Children.map来遍历子节点，而不需要担心
+	//子节点是否是undefined、object。有多个子结点时，数据类型就为array
+</script>
+</body>
+</html>
+
+</body>
+</html>

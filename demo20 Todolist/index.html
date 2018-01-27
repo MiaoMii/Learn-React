@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Todo List</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/babel">
+	class TodoList extends React.Component {
+		render() {
+			return (
+				<div>
+					<AddList />
+					<List />
+				</div>
+			)
+		}
+	}
+
+	class AddList extends React.Component {
+		constructor(props) {
+			super(props)
+			this.state = {
+				value:''
+			}
+			this.handleChange = this.handleChange.bind(this)
+		}
+
+		handleChange(event) {
+			this.setState = ({
+				value:event.target.value
+			})
+		}
+
+		render() {
+			return (
+				<input type="text" placeholder="What you want to do" value={this.state.value} onChange={this.handleChange}/>
+			)
+		}
+	}
+
+	class List extends React.Component {
+		constructor(props) {
+			super(props)
+
+		}
+
+		render() {
+			return (
+				<div></div>
+			)
+		}
+	}
+	ReactDOM.render(
+		<TodoList />,
+		document.getElementById('container')
+	)
+</script>
+</body>
+</html>
