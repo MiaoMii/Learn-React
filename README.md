@@ -1,5 +1,7 @@
 #Redux
+
 @[redux, react]
+
 ###Action
 >Actions（一个包含｛type，payload（有效载荷）｝JavaScript对象）Action是把数据从应用传到store的有效载荷。是store的唯一数据来源
 
