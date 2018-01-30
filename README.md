@@ -1,8 +1,6 @@
-#Redux
+# Redux
 
-@[redux, react]
-
-###Action
+### Action
 >Actions（一个包含｛type，payload（有效载荷）｝JavaScript对象）Action是把数据从应用传到store的有效载荷。是store的唯一数据来源
 
 
@@ -22,7 +20,7 @@
 	}
 }
 ```
-###Reducer（一个函数）
+### Reducer（一个函数）
 >用来处理Action触发的对状态树的更改
 
 接收两个参数，`action`和 `oldState` 返回一个新的`state:(oldState,action ) => new State`
@@ -68,7 +66,7 @@ Redux 提供了一个工具函数 `combineReducers`来简化这种reducer的合�
 	})
 ```
 像`someApp`这种管理整个State的reducer，可以称作 **root reducer**
-###Store
+### Store
 >连接Action 和 Reducer
 
 Store的作用：
@@ -96,7 +94,7 @@ store.dispatch({ type: 'CHANGE_B', payload: 'Modified b' });
 // Stop listening to state updates
 unsubscribe();
 ```
-###Date Flow
+### Date Flow
 `store.dispatch(action)  -> reducer(state,action) -> store.getState()` 其实就构成了一个单向数据流
 #####1、调用 `store.dispatch(action)`
 Action是一个包含 `{  type,payload }`的对象，它描述“发生了什么”，比如
